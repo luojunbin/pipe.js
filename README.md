@@ -10,7 +10,7 @@ npm i --save tree-pipe
 
 ## 例:
 
-```
+```js
 import pipe from 'tree-pipe';
 
 function step0(data) {
@@ -42,24 +42,31 @@ function step3(data) {
 // 顺序执行
 let p0 = pipe.p(step0, step1, step2, step3);
 
-```
 step0 -------> step1 -------> step2 -------> step3
 ```
+
+
+```
+
+
 
 // 传入数组表示分支
 let p1 = pipe.p(step0, [step1, step2], step3);
 
-```
+
 step0 -------> step1 -------> step2 
   |
   |
   -----------> step3
 ```
 
+
+```
+
+  
 // 分支嵌套分支
 let p2 = pipe.p(step0, [step1], [step2, [step3], step3]);
 
-```
 step0 -------> step1
   |
   |
@@ -67,11 +74,6 @@ step0 -------> step1
                  |
                  |
                  -----------> step3
-
-```
-p0({a: 1, b: 2});
-p1({a: 1, b: 2});
-p2({a: 1, b: 2});
 
 ```
 
